@@ -1,18 +1,20 @@
 package com.LaboratuvarTestSonuclari;
 
+import com.LaboratuvarTestSonuclari.Model.Hasta;
+
 public abstract class Tahlil {
     private String tahlilDurumu;
     private String tahlilAdi;
     private String tahlilTarihi;
-     private long tahlilHasta;
+    private Hasta hasta;
     private String tahlilDoktor;
     private String tahlilLaborant;
 
-    public Tahlil(String tahlilDurumu,String tahlilAdi,  String tahlilTarihi,long tahlilHasta, String tahlilDoktor, String tahlilLaborant) {
+    public Tahlil(String tahlilDurumu, String tahlilAdi, String tahlilTarihi, Hasta hasta, String tahlilDoktor, String tahlilLaborant) {
         this.tahlilDurumu = tahlilDurumu;
         this.tahlilAdi = tahlilAdi;
         this.tahlilTarihi = tahlilTarihi;
-        this.tahlilHasta = tahlilHasta;
+        this.hasta = hasta;
         this.tahlilDoktor = tahlilDoktor;
         this.tahlilLaborant = tahlilLaborant;
     }
@@ -34,12 +36,8 @@ public abstract class Tahlil {
         this.tahlilTarihi = tahlilTarihi;
     }
 
-    public long getTahlilHasta() {
-        return tahlilHasta;
-    }
-
-    public void setTahlilHasta(int tahlilHasta) {
-        this.tahlilHasta = tahlilHasta;
+    public Hasta getTahlilHasta() {
+        return hasta;
     }
 
 
