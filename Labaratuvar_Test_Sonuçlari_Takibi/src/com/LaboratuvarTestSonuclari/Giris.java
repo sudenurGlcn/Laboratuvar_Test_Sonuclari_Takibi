@@ -1,5 +1,9 @@
 package com.LaboratuvarTestSonuclari;
 
+import com.LaboratuvarTestSonuclari.Model.Doktor;
+import com.LaboratuvarTestSonuclari.Model.Hasta;
+import com.LaboratuvarTestSonuclari.Model.Laborant;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -42,16 +46,17 @@ public class Giris extends JFrame{
                 Boolean flag = false;
                 if (kullanici.equals("Hasta")){
                     for(Hasta hasta : Hasta.hastalar) {
-                        if(hasta.getKimlikNo()==kimlik && hasta.getSifre().equals(sifre))
+                        if(hasta.getTc()==kimlik && hasta.getSifre().equals(sifre))
                         {
-                            Hasta hasta1 = new Hasta();
-                            hasta1.lbl_kullanici_isim.setText(hasta.getAd()+" "+hasta.getSoyad());
+                            HastaGUI hasta1 = new HastaGUI(hasta);
+                            hasta1.lbl_kullanici_isim.setText(hasta.getIsim()+" "+hasta.getSoyisim());
                             hasta1.lbl_kullanici_Yas.setText(String.valueOf(hasta.getYas()));
                             hasta1.setVisible(true);
                             dispose();
                             flag= true;
+                            break;
                         }
-                        else if ( hasta.getKimlikNo()==kimlik && hasta.getSifre()!=sifre){
+                        else if ( hasta.getTc()==kimlik && hasta.getSifre()!=sifre){
                             JOptionPane.showMessageDialog(null, "Hatalı Giriş");
                         }
                     }
@@ -62,16 +67,17 @@ public class Giris extends JFrame{
                 }
                 else if (kullanici.equals("Doktor")){
                     Boolean flag1 = false;
-                    for(Doktor doktor : Kayit.doktorlar) {
-                        if(doktor.getKimlikNo()==kimlik && doktor.getSifre().equals(sifre))
+                    for(Doktor doktor : Doktor.doktorlar) {
+                        if(doktor.getTc()==kimlik && doktor.getSifre().equals(sifre))
                         {
-                            Doktor doktor1 = new Doktor();
+                            DoktorGUI doktor1 = new DoktorGUI(doktor);
                             doktor1.lbl_kullanici_isim.setText(doktor.getIsim()+" "+doktor.getSoyisim());
                             doktor1.setVisible(true);
                             dispose();
                             flag1= true;
+                            break;
                         }
-                        else if ( doktor.getKimlikNo()==kimlik && doktor.getSifre()!=sifre){
+                        else if ( doktor.getTc()==kimlik && doktor.getSifre()!=sifre){
                             JOptionPane.showMessageDialog(null, "Hatalı Giriş");
                             flag1= true;
                         }
@@ -83,16 +89,17 @@ public class Giris extends JFrame{
                 else if (kullanici.equals("Laborant")){
                     Boolean flag2 = false;
 
-                    for(Laborant laborant : Kayit.laborantlar) {
-                        if(laborant.getKimlikNo()==kimlik && laborant.getSifre().equals(sifre))
+                    for(Laborant laborant : Laborant.laborantlar) {
+                        if(laborant.getTc()==kimlik && laborant.getSifre().equals(sifre))
                         {
-                            Laborant laborant1 = new Laborant();
+                            LaborantGUI laborant1 = new LaborantGUI(laborant);
                             laborant1.lbl_hosgeldin.setText("Hosgeldiniz "+laborant.getIsim()+" "+laborant.getSoyisim());
                             laborant1.setVisible(true);
                             dispose();
                             flag2= true;
+                            break;
                         }
-                        else if ( laborant.getKimlikNo()==kimlik && laborant.getSifre()!=sifre){
+                        else if ( laborant.getTc()==kimlik && laborant.getSifre()!=sifre){
                             JOptionPane.showMessageDialog(null, "Hatalı Giriş");
                             flag2= true;
                         }
